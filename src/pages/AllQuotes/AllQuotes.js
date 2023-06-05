@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 function AllQuotes() {
   const [quotes, setQuotes] = useState([]);
-  const firstQuoteId = "63dd1748a045500035752dc4"; // Replace with the first quote ID
-  const secondQuoteId = "63d1846cf353e20036f8b3e5"; // Replace with the second quote ID
+  const firstQuoteId = "63dd1748a045500035752dc4";
+  const secondQuoteId = "63d1846cf353e20036f8b3e5";
 
   useEffect(() => {
     fetch("https://js-course-server.onrender.com/quotes/get-all-quotes")
