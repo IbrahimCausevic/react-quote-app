@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./QuoteDetails.css";
 import { useParams } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
+import DetailsNavbar from "../../components/Navbar/DetailsNavbar";
 
 function QuoteDetails() {
   const params = useParams();
@@ -33,7 +33,7 @@ function QuoteDetails() {
 
   return (
     <div>
-      <Navbar />
+      <DetailsNavbar />
       <div className="quote-details">
         <div className="quote-details-card">
           <h3>

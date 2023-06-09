@@ -10,7 +10,9 @@ const LoginNavbar = () => {
   return (
     <div className="Navbar">
       <div className="Logo">ReactQuotes</div>
-      <button onClick={Home}>Home</button>
+      <div className="options">
+        <button onClick={Home}>Home</button>
+      </div>
     </div>
   );
 };
