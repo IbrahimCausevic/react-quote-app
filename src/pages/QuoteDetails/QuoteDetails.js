@@ -46,8 +46,10 @@ function QuoteDetails() {
           </p>
           <p>{quote.quoteSource}</p>
           <p className="likes">Likes: {quote.likes}</p>
-          <button onClick={likeHandler}>Like</button>
-          <button>Edit</button>
+          <div className="buttons">
+            <button onClick={likeHandler}>Like</button>
+            <button>Edit</button>
+          </div>
         </div>
       </div>
     </div>
