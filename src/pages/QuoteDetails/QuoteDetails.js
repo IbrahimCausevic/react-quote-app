@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./QuoteDetails.css";
 import { useParams } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 
 function QuoteDetails() {
   const params = useParams();
@@ -31,20 +32,23 @@ function QuoteDetails() {
   };
 
   return (
-    <div className="quote-details">
-      <div className="quote-details-card">
-        <h3>
-          <i>{quote.quoteText}</i>
-        </h3>
-        <p>
-          <b>
-            <i>{quote.quoteAuthor}</i>
-          </b>
-        </p>
-        <p>{quote.quoteSource}</p>
-        <p className="likes">Likes: {quote.likes}</p>
-        <button onClick={likeHandler}>Like</button>
-        <button>Edit</button>
+    <div>
+      <Navbar />
+      <div className="quote-details">
+        <div className="quote-details-card">
+          <h3>
+            <i>{quote.quoteText}</i>
+          </h3>
+          <p>
+            <b>
+              <i>{quote.quoteAuthor}</i>
+            </b>
+          </p>
+          <p>{quote.quoteSource}</p>
+          <p className="likes">Likes: {quote.likes}</p>
+          <button onClick={likeHandler}>Like</button>
+          <button>Edit</button>
+        </div>
       </div>
     </div>
   );
