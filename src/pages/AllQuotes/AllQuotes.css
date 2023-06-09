@@ -1,19 +1,18 @@
 .all-quotes {
-  background-color: aquamarine;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-}
-.section {
-  display: flex;
-  justify-content: center;
-  width: 80%;
-}
-.quote-card {
-  background-color: white;
+  background-color: aqua;
+  min-height: 100vh;
   padding: 10px;
-  border-radius: 10px;
-  margin: 10px;
-  width: 40%;
-  height: fit-content;
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  margin-top: 10%;
+}
+button {
+  background-color: aliceblue;
+  border: 3px solid white;
+  border-radius: 20px;
+  color: rgb(7, 0, 107);
+  font-weight: 700;
+  font-size: 15px;
 }

@@ -1,0 +1,9 @@
+.quote-card {
+  text-align: center;
+  padding: 20px;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  margin: 20px;
+  background-color: rgba(0, 0, 0, 0.097);
+  width: 80%;
+}

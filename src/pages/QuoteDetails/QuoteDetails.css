@@ -1,9 +1,27 @@
-* {
-  margin: 0;
-  padding: 0;
-}
 .quote-details {
-  background-color: rgb(52, 133, 255);
+  background-color: aqua;
   height: 100vh;
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote-details-card {
+  border: 3px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: rgb(7, 0, 107);
+  width: 50%;
+}
+
+.quote-details-card p {
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.likes {
+  font-size: 12px;
+  color: rgb(3, 85, 166);
+  font-weight: bold;
 }
