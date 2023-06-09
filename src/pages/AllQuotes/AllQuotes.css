@@ -16,3 +16,7 @@ button {
   font-weight: 700;
   font-size: 15px;
 }
+
+::-webkit-scrollbar {
+  width: 0;
+}
