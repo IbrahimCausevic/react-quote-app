@@ -32,6 +32,7 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.token) {
+          window.alert("Registered successfuly!");
           navigate("/");
         }
       });

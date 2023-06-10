@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./AllQuotes.css";
 import QuoteCard from "../../components/QuoteCard/QuoteCard";
 import Navbar from "../../components/Navbar/Navbar";
+// import AddQuote from "../../components/AddQuote/AddQuote";
 
 function AllQuotes() {
   const [quotes, setQuotes] = useState([]);
@@ -26,8 +27,9 @@ function AllQuotes() {
         <div className="wrapper">
           {quotes.map((quote, index) => {
             return <QuoteCard key={index} quote={quote} />;
-          })}
+          })}{" "}
         </div>
+        {/* <AddQuote /> */}
       </div>
     </div>
   );

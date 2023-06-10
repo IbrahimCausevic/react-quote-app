@@ -37,6 +37,7 @@ const Login = () => {
               .then((res) => res.json())
               .then((data) => {
                 if (data.token) {
+                  window.alert("Login successful!");
                   navigate("/");
                 }
               });
