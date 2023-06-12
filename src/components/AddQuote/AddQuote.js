@@ -5,10 +5,10 @@ import "./AddQuote.css";
 const AddQuote = () => {
   const navigate = useNavigate();
   const Edit = () => {
-    navigate("/edit");
+    navigate("/addquote");
   };
   return (
-    <div onClick={AddQuote} className="Edit">
+    <div onClick={Edit} className="Edit">
       +
     </div>
   );

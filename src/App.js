@@ -5,6 +5,7 @@ import QuoteDetails from "./pages/QuoteDetails/QuoteDetails";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import AddQuote from "./components/AddQuote/AddQuote";
+import AddNewQuote from "./pages/AddNewQuote/AddNewQuote";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/edit" element={<AddQuote />} />
+        <Route path="/addquote" element={<AddNewQuote />} />
       </Routes>
     </BrowserRouter>
   );

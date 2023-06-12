@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./AllQuotes.css";
 import QuoteCard from "../../components/QuoteCard/QuoteCard";
 import Navbar from "../../components/Navbar/Navbar";
-// import AddQuote from "../../components/AddQuote/AddQuote";
+import AddQuote from "../../components/AddQuote/AddQuote";
 
 function AllQuotes() {
   const [quotes, setQuotes] = useState([]);
@@ -29,7 +29,7 @@ function AllQuotes() {
             return <QuoteCard key={index} quote={quote} />;
           })}{" "}
         </div>
-        {/* <AddQuote /> */}
+        <AddQuote />
       </div>
     </div>
   );
