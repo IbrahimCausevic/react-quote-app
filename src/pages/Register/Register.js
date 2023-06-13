@@ -3,7 +3,7 @@ import "./Register.css";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import LoginNavbar from "../../components/Navbar/LoginNavbar";
+import RegisterNavbar from "../../components/Navbar/RegisterNavbar";
 
 const registrationSchema = yup.object({
   fullName: yup.string().required("Name is required"),
@@ -40,7 +40,7 @@ const Register = () => {
 
   return (
     <div>
-      <LoginNavbar />
+      <RegisterNavbar />
       <div className="register-wrapper">
         <Formik
           initialValues={{

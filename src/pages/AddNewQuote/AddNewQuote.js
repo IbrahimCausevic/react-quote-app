@@ -3,6 +3,7 @@ import "./AddNewQuote.css";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { Navigate, useNavigate } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 
 const newQuoteSchema = yup.object({
   quoteText: yup
@@ -64,97 +65,100 @@ const AddNewQuote = () => {
   }
 
   return (
-    <div className="add-quote-wrapper">
-      <Formik
-        initialValues={{
-          quoteText: "",
-          quoteAuthor: "",
-          quoteSource: "",
-          category: "",
-        }}
-        validationSchema={newQuoteSchema}
-        onSubmit={(values, actions) => {
-          submitForm(values);
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-        }) => (
-          <div>
+    <div>
+      <Navbar />
+      <div className="add-quote-wrapper">
+        <Formik
+          initialValues={{
+            quoteText: "",
+            quoteAuthor: "",
+            quoteSource: "",
+            category: "",
+          }}
+          validationSchema={newQuoteSchema}
+          onSubmit={(values, actions) => {
+            submitForm(values);
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          }) => (
             <div>
-              <h1>Text</h1>
-              <textarea
-                type="text"
-                name="quoteText"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.quoteText}
-              />
-              <p className="error-message">
-                {errors.quoteText && touched.quoteText && errors.quoteText}
-              </p>
-            </div>
-            <div>
-              <h1>Author</h1>
-              <input
-                type="text"
-                name="quoteAuthor"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.quoteAuthor}
-              />
-              <p className="error-message">
-                {errors.quoteAuthor &&
-                  touched.quoteAuthor &&
-                  errors.quoteAuthor}
-              </p>
-            </div>
-            <div>
-              <h1>Source</h1>
-              <input
-                type="text"
-                name="quoteSource"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.quoteSource}
-              />
-              <p className="error-message">
-                {errors.quoteSource &&
-                  touched.quoteSource &&
-                  errors.quoteSource}
-              </p>
-            </div>
-            <div>
-              <h1>Category</h1>
-              <select
-                name="category"
-                onChange={handleChange}
-                value={values.category}
-              >
-                <option value={""} disabled={true}>
-                  Kategorija
-                </option>
-                {categories.map((item, index) => (
-                  <option key={index} value={item._id}>
-                    {item.name}
+              <div>
+                <h1>Text</h1>
+                <textarea
+                  type="text"
+                  name="quoteText"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.quoteText}
+                />
+                <p className="error-message">
+                  {errors.quoteText && touched.quoteText && errors.quoteText}
+                </p>
+              </div>
+              <div>
+                <h1>Author</h1>
+                <input
+                  type="text"
+                  name="quoteAuthor"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.quoteAuthor}
+                />
+                <p className="error-message">
+                  {errors.quoteAuthor &&
+                    touched.quoteAuthor &&
+                    errors.quoteAuthor}
+                </p>
+              </div>
+              <div>
+                <h1>Source</h1>
+                <input
+                  type="text"
+                  name="quoteSource"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.quoteSource}
+                />
+                <p className="error-message">
+                  {errors.quoteSource &&
+                    touched.quoteSource &&
+                    errors.quoteSource}
+                </p>
+              </div>
+              <div>
+                <h1>Category</h1>
+                <select
+                  name="category"
+                  onChange={handleChange}
+                  value={values.category}
+                >
+                  <option value={""} disabled={true}>
+                    Kategorija
                   </option>
-                ))}
-              </select>
-              <p className="error-message">
-                {errors.category && touched.category && errors.category}
-              </p>
+                  {categories.map((item, index) => (
+                    <option key={index} value={item._id}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+                <p className="error-message">
+                  {errors.category && touched.category && errors.category}
+                </p>
+              </div>
+              <button onClick={handleSubmit} type="button">
+                Submit
+              </button>
             </div>
-            <button onClick={handleSubmit} type="button">
-              Submit
-            </button>
-          </div>
-        )}
-      </Formik>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };
