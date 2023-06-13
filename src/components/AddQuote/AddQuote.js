@@ -9,7 +9,7 @@ const AddQuote = () => {
   };
   return (
     <div onClick={Edit} className="Edit">
-      +
+      New
     </div>
   );
 };
