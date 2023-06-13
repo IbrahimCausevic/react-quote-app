@@ -64,7 +64,8 @@ const AddNewQuote = () => {
     return <Navigate to={"/login"} replace={true} />;
   }
 
-  return (<div>
+  return (
+<div>
     <div className="add-quote-wrapper">
       <Formik
         initialValues={{
