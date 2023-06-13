@@ -16,7 +16,7 @@ function QuoteDetails() {
       .catch((error) => {
         console.log(error);
       });
-  }, [params.id]); // Add params.id as a dependency
+  }, [params.id]);
 
   const likeHandler = () => {
     fetch("https://js-course-server.onrender.com/quotes/like/" + params.id, {

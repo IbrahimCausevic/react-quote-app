@@ -38,6 +38,7 @@ const Login = () => {
               .then((data) => {
                 if (data.token) {
                   alert("Login successful!");
+                  localStorage.setItem("authToken", data.token);
                   navigate("/");
                 }
               });
