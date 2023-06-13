@@ -3,11 +3,7 @@ import "./AddNewQuote.css";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { Navigate, useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import Navbar from "../../components/Navbar/Navbar";
-=======
-import Navbar from "../../components/Navbar/Navbar"
->>>>>>> dc768e753825d7e685277aab4cf15e9a202ffa73
 
 const newQuoteSchema = yup.object({
   quoteText: yup
@@ -69,7 +65,6 @@ const AddNewQuote = () => {
   }
 
   return (
-<<<<<<< HEAD
     <div>
       <Navbar />
       <div className="add-quote-wrapper">
@@ -93,31 +88,6 @@ const AddNewQuote = () => {
             handleBlur,
             handleSubmit,
           }) => (
-=======
-<div>
-    <div className="add-quote-wrapper">
-      <Formik
-        initialValues={{
-          quoteText: "",
-          quoteAuthor: "",
-          quoteSource: "",
-          category: "",
-        }}
-        validationSchema={newQuoteSchema}
-        onSubmit={(values, actions) => {
-          submitForm(values);
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-        }) => (
-          <div>
->>>>>>> dc768e753825d7e685277aab4cf15e9a202ffa73
             <div>
               <div>
                 <h1>Text</h1>
@@ -186,20 +156,10 @@ const AddNewQuote = () => {
                 Submit
               </button>
             </div>
-<<<<<<< HEAD
           )}
         </Formik>
       </div>
     </div>
-=======
-            <button onClick={handleSubmit} type="button">
-              Submit
-            </button>
-          </div>
-        )}
-      </Formik>
-    </div></div>
->>>>>>> dc768e753825d7e685277aab4cf15e9a202ffa73
   );
 };
 
