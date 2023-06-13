@@ -3,6 +3,7 @@ import "./AddNewQuote.css";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { Navigate, useNavigate } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar"
 
 const newQuoteSchema = yup.object({
   quoteText: yup
@@ -63,7 +64,7 @@ const AddNewQuote = () => {
     return <Navigate to={"/login"} replace={true} />;
   }
 
-  return (
+  return (<div>
     <div className="add-quote-wrapper">
       <Formik
         initialValues={{
@@ -155,7 +156,7 @@ const AddNewQuote = () => {
           </div>
         )}
       </Formik>
-    </div>
+    </div></div>
   );
 };
 
