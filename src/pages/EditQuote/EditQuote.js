@@ -52,7 +52,6 @@ const EditQuote = () => {
         setIsLoading(false);
       });
   }, []);
-
   const submitForm = (values) => {
     fetch("https://js-course-server.onrender.com/quotes/edit/" + params.id, {
       method: "PATCH",
