@@ -1,33 +1,40 @@
 import React, { useEffect, useState } from "react";
-import "./AddNewQuote.css";
+import "./EditQuote.css";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { Navigate, useNavigate } from "react-router-dom";
-import EditNavbar from "../../components/Navbar/EditNavbar";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
-const newQuoteSchema = yup.object({
+const editQuoteSchema = yup.object({
   quoteText: yup
     .string()
-    .required("Ovo polje ne sme biti prazno")
-    .min(6, "Na ovom polju mora da ima najmanje 6 karaktera")
-    .max(100, "Na ovom polju mora da ima najvise 50 karaktera"),
+    .required("quoteText je obavezno polje")
+    .min(6, "quoteText mora da ima najmanje 6 karaktera")
+    .max(100, "quoteText mora da ima najvise 50 karaktera"),
   quoteAuthor: yup
     .string()
-    .required("Ovo polje ne sme biti prazno")
-    .min(6, "Na ovom polju mora da ima najmanje 6 karaktera")
-    .max(100, "Na ovom polju mora da ima najvise 50 karaktera"),
+    .required("quoteAuthor je obavezno polje")
+    .min(4, "quoteAuthor mora da ima najmanje 6 karaktera")
+    .max(50, "quoteAuthor mora da ima najvise 50 karaktera"),
   quoteSource: yup
     .string()
-    .required("Ovo polje ne sme biti prazno")
-    .min(6, "Na ovom polju mora da ima najmanje 6 karaktera")
-    .max(100, "Na ovom polju mora da ima najvise 50 karaktera"),
-  category: yup.string().required("Molim te odaberi kategoriju"),
+    .required("quoteSource je obavezno polje")
+    .min(4, "quoteSource mora da ima najmanje 6 karaktera")
+    .max(200, "quoteSource mora da ima najvise 50 karaktera"),
+  category: yup.string().required("Category je obavezno polje"),
 });
 
-const AddNewQuote = () => {
+const EditQuote = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
   const [categories, setCategories] = useState([]);
+  const params = useParams();
+  const [quote, setQuote] = useState({
+    quoteText: "",
+    quoteAuthor: "",
+    quoteSource: "",
+    category: "",
+  });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://js-course-server.onrender.com/category/get-all")
@@ -37,9 +44,18 @@ const AddNewQuote = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetch("https://js-course-server.onrender.com/quotes/get-quote/" + params.id)
+      .then((res) => res.json())
+      .then((data) => {
+        setQuote(data);
+        setIsLoading(false);
+      });
+  }, []);
+
   const submitForm = (values) => {
-    fetch("https://js-course-server.onrender.com/quotes/add-quote", {
-      method: "POST",
+    fetch("https://js-course-server.onrender.com/quotes/edit/" + params.id, {
+      method: "PATCH",
       body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json",
@@ -64,34 +80,38 @@ const AddNewQuote = () => {
     return <Navigate to={"/login"} replace={true} />;
   }
 
+  if (isLoading) {
+    return (
+      <div className="edit-quote-wrapper">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <EditNavbar />
-      <div className="add-quote-wrapper">
+    <div className="edit-quote-wrapper">
+      <div>
+        <h1>Edit Quote page</h1>
         <Formik
-          initialValues={{
-            quoteText: "",
-            quoteAuthor: "",
-            quoteSource: "",
-            category: "",
-          }}
-          validationSchema={newQuoteSchema}
+          enableReinitialize={true}
+          initialValues={quote}
+          validationSchema={editQuoteSchema}
           onSubmit={(values, actions) => {
             submitForm(values);
           }}
         >
           {({
-            values,
-            errors,
-            touched,
+            values, // formikov state => { email: "", password: "" }
+            errors, // errors = { email: 'Neispravan email', password: 'Password is required field' }
+            touched, // touched = { email: true }
             handleChange,
             handleBlur,
             handleSubmit,
           }) => (
             <div>
               <div>
-                <h1>Text</h1>
-                <textarea
+                <p>Text</p>
+                <input
                   type="text"
                   name="quoteText"
                   onChange={handleChange}
@@ -103,7 +123,7 @@ const AddNewQuote = () => {
                 </p>
               </div>
               <div>
-                <h1>Author</h1>
+                <p>Author</p>
                 <input
                   type="text"
                   name="quoteAuthor"
@@ -118,7 +138,7 @@ const AddNewQuote = () => {
                 </p>
               </div>
               <div>
-                <h1>Source</h1>
+                <p>Source</p>
                 <input
                   type="text"
                   name="quoteSource"
@@ -133,14 +153,14 @@ const AddNewQuote = () => {
                 </p>
               </div>
               <div>
-                <h1>Category</h1>
+                <p>Category</p>
                 <select
                   name="category"
                   onChange={handleChange}
                   value={values.category}
                 >
                   <option value={""} disabled={true}>
-                    Kategorija
+                    -- Izaberi kategoriju --
                   </option>
                   {categories.map((item, index) => (
                     <option key={index} value={item._id}>
@@ -152,6 +172,15 @@ const AddNewQuote = () => {
                   {errors.category && touched.category && errors.category}
                 </p>
               </div>
+
+              {/* <button
+              onClick={() => {
+                console.log(values, "values");
+              }}
+              type="button"
+            >
+              Show values
+            </button> */}
               <button onClick={handleSubmit} type="button">
                 Submit
               </button>
@@ -163,4 +192,4 @@ const AddNewQuote = () => {
   );
 };
 
-export default AddNewQuote;
+export default EditQuote;
